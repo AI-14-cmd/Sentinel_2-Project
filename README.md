@@ -2,6 +2,8 @@
 
 This project analyzes Sentinel-2 satellite data to perform forest classification. It calculates the Normalized Difference Vegetation Index (NDVI) to classify forest cover, generates a report and a visualization of the results, and can be run both as a command-line tool and as a web application.
 
+This project also includes a separate web application in the `Sentinel_2 web page` directory, and a collection of scripts for interacting with the Sentinel API in the `Sentinel_api` directory.
+
 ## Features
 
 *   **Data Loading**: Loads Sentinel-2 bands from Google Earth Engine.
@@ -26,7 +28,7 @@ This project analyzes Sentinel-2 satellite data to perform forest classification
     pip install -r requirements.txt
     ```
 
-3. You will also need to authenticate with Google Earth Engine. Follow the instructions at [https://developers.google.com/earth-engine/guides/python_install#authentication](https://developers.google.com/earth-engine/guides/python_install#authentication) to set up your credentials.
+3. You will also need to authenticate with Google Earth Engine. You can use the `authenticate_gee.py` script for this, or follow the instructions at [https://developers.google.com/earth-engine/guides/python_install#authentication](https://developers.google.com/earth-engine/guides/python_install#authentication) to set up your credentials.
 
 ## Usage
 
@@ -59,10 +61,15 @@ Then, open your web browser and navigate to `http://127.0.0.1:5000`. From the we
 *   `Anni_code.py`: Core functions for the analysis.
 *   `gee_data_loader.py`: Functions for loading data from Google Earth Engine.
 *   `area_selector.py`: Functions for getting user input for the area of interest.
+*   `authenticate_gee.py`: Script to authenticate with Google Earth Engine.
+*   `show_results.py`: Script to display the analysis results.
+*   `Sentinel_2 web page/`: Contains an additional web application.
+*   `Sentinel_api/`: Scripts and notebooks for interacting with the Sentinel API.
 *   `requirements.txt`: The list of Python dependencies.
 *   `templates/index.html`: The main HTML page for the web application.
 *   `static/`: Static files for the web application (CSS, JS, images).
 *   `sentinel_output/`: The directory where the output reports and charts are saved.
+*   `S2B_MSIL2A_20250212T052839_N0511_R105_T43PCT_20250212T073349.SAFE/`: Example Sentinel-2 data.
 
 ## Contributing
 

@@ -1,0 +1,9 @@
+Sentinel-2 Forest Cover Analysis Report
+======================================
+
+Total analyzed area: 1 pixels
+
+Forest Classification:
+- Dense Forest: 1 pixels (100.0%)
+- Light Forest: 0 pixels (0.0%)
+- Deforested: 0 pixels (0.0%)

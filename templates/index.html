@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinel-2 Forest Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sentinel-2 Forest Analysis Tool</h1>
+            <p class="subtitle">Remote sensing forest cover analysis and reporting</p>
+        </header>
+
+        <main>
+            <div class="card control-panel">
+                <h2>Control Panel</h2>
+                <div class="button-container">
+                    <button id="run-button" class="primary-button">Run Analysis</button>
+                    <button id="stop-button" class="secondary-button">Stop Analysis</button>
+                </div>
+                <div id="status-indicator" class="status idle">
+                    Status: <span id="status-text">Idle</span>
+                </div>
+            </div>
+
+            <div class="card results-panel" id="results-panel" style="display: none;">
+                <h2>Analysis Results</h2>
+                <div id="timestamp" class="timestamp"></div>
+                
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="log">Process Log</button>
+                    <button class="tab-button" data-tab="report">Report</button>
+                    <button class="tab-button" data-tab="visualization">Visualization</button>
+                </div>
+                
+                <div id="log-tab" class="tab-content active">
+                    <div id="log-container" class="log-container"></div>
+                </div>
+                
+                <div id="report-tab" class="tab-content">
+                    <pre id="report-content" class="report-content"></pre>
+                </div>
+                
+                <div id="visualization-tab" class="tab-content">
+                    <div id="chart-container" class="chart-container">
+                        <img id="chart-image" class="chart-image" src="{{ url_for('static', filename='sentinel_output/forest_classification.png') }}" alt="Forest Classification Chart" onerror="this.style.display='none'">
+                        <p id="no-chart-message" style="display: none;">No visualization available yet. Run the analysis to generate a chart.</p>
+                    </div>
+                </div>
+                
+                <div id="email-status" class="email-status">
+                    <span id="email-icon">📧</span> 
+                    <span id="email-text">Waiting to send email...</span>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Sentinel-2 Forest Analysis System &copy; 2025</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

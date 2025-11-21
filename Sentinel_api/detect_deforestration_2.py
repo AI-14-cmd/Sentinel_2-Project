@@ -1,0 +1,29 @@
+import requests
+
+# Define API endpoint for searching Sentinel-2 products
+API_URL = "https://data.dataspace.copernicus.eu/odata/v1/Products"
+
+# Replace with your valid access token
+ACCESS_TOKEN = "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJYVUh3VWZKaHVDVWo0X3k4ZF8xM0hxWXBYMFdwdDd2anhob2FPLUxzREZFIn0.eyJleHAiOjE3NDA3MTIwMjIsImlhdCI6MTc0MDcxMTQyMiwianRpIjoiMTdmNDI5NmYtZjYyOC00NjIwLTk4MTktMTE4NmMyYmUwY2M3IiwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS5kYXRhc3BhY2UuY29wZXJuaWN1cy5ldS9hdXRoL3JlYWxtcy9DRFNFIiwic3ViIjoiY2FhN2RhYzMtYmEzZC00ZTBlLTk0ZTMtOTQzMjI4NzVjMzkwIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoic2gtNmQ1MWY3ZmYtMjBiNC00ODUxLWEwZmItMjQ1MTIzYTI3NjBjIiwic2NvcGUiOiJlbWFpbCBwcm9maWxlIHVzZXItY29udGV4dCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiY2xpZW50SG9zdCI6IjQ5LjQzLjI0MC4yMTkiLCJvcmdhbml6YXRpb25zIjpbImRlZmF1bHQtNGE1YjhlMWQtNzc3NS00N2MwLWIyZDYtYzc3NWNmOTMzZmEwIl0sInVzZXJfY29udGV4dF9pZCI6ImI3MmQzMTRiLWIzMjItNDU4Ny1iMDIwLTM0ZmVmMzRmNTRkMyIsImNvbnRleHRfcm9sZXMiOnt9LCJjb250ZXh0X2dyb3VwcyI6WyIvYWNjZXNzX2dyb3Vwcy91c2VyX3R5cG9sb2d5L2NvcGVybmljdXNfZ2VuZXJhbC8iLCIvb3JnYW5pemF0aW9ucy9kZWZhdWx0LTRhNWI4ZTFkLTc3NzUtNDdjMC1iMmQ2LWM3NzVjZjkzM2ZhMC8iXSwicHJlZmVycmVkX3VzZXJuYW1lIjoic2VydmljZS1hY2NvdW50LXNoLTZkNTFmN2ZmLTIwYjQtNDg1MS1hMGZiLTI0NTEyM2EyNzYwYyIsInVzZXJfY29udGV4dCI6ImRlZmF1bHQtNGE1YjhlMWQtNzc3NS00N2MwLWIyZDYtYzc3NWNmOTMzZmEwIiwiY2xpZW50QWRkcmVzcyI6IjQ5LjQzLjI0MC4yMTkiLCJjbGllbnRfaWQiOiJzaC02ZDUxZjdmZi0yMGI0LTQ4NTEtYTBmYi0yNDUxMjNhMjc2MGMifQ.as6LlwNIbHncA7fCsB9UdEOkUybegxlOFcfFZRsPl6FUU51hdhLeaYWNFVLBjs1nXH9B1jyZkuXBEsTpNYdKMPVvIpOgR96_fDMc3ltw5Abmy39b5SiAjOCtOwtNKL4bXTBOowG7KEZp8dQeQ-s10L0kLH8qyHCvvAOZ_w1cmJSJ3oLuDIAbIFeLSIJl3-vna7oRD3zntKHoa4_agC7fAAqDjQL2dqDJAjMdSG1EwYmKzqSjWLav0gG8In3Ph3wDu-VdE3nh800yigIcgzOhe2Qyk_IdL41bn6H7pjfi78QWS4RsgHsRwOAE1d5RptpbJVD7Ebge-wQ3jdxBvBkyzA"
+
+# Define headers
+headers = {
+    "Authorization": f"Bearer {ACCESS_TOKEN}",
+    "Content-Type": "application/json"
+}
+
+# Define search parameters
+params = {
+    "$filter": "contains(Name, 'S2A_MSIL2A')"  # Filter for Sentinel-2 Level-2A images (atmospheric corrected)
+}
+
+# Make the request
+response = requests.get(API_URL, headers=headers, params=params)
+
+# Print the response
+if response.status_code == 200:
+    print("Sentinel-2 Images Retrieved Successfully!")
+    data = response.json()
+    print(data)  # Print image metadata
+else:
+    print("Error Fetching Data:", response.status_code, response.text)
