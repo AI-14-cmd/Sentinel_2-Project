@@ -1,19 +1,45 @@
-# Sentinel-2 Forest Analysis
+# Sentinel-2 Forest Analysis for Environmental Monitoring
 
-This project analyzes Sentinel-2 satellite data to perform forest classification. It calculates the Normalized Difference Vegetation Index (NDVI) to classify forest cover, generates a report and a visualization of the results, and can be run both as a command-line tool and as a web application.
+## Project Overview
 
-This project also includes a separate web application in the `Sentinel_2 web page` directory, and a collection of scripts for interacting with the Sentinel API in the `Sentinel_api` directory.
+This project provides a comprehensive solution for monitoring deforestation and forest health using Sentinel-2 satellite imagery. It is a powerful tool for environmental agencies, researchers, and land managers to track changes in forest cover over time.
 
-## Features
+The system is designed to be accessible to both technical and non-technical users, offering both a simple web interface and a command-line tool for advanced users.
 
-*   **Data Loading**: Loads Sentinel-2 bands from Google Earth Engine.
-*   **NDVI Calculation**: Computes NDVI from the red and near-infrared bands.
-*   **Forest Classification**: Classifies the area into forest and non-forest based on the NDVI values.
-*   **Reporting**: Generates a text-based report of the analysis.
-*   **Visualization**: Creates a PNG image visualizing the forest classification.
-*   **Email Notification**: Sends an email with the report and visualization.
-*   **Web Interface**: A Flask web application to run the analysis and view the results.
-*   **Command-Line Interface**: A command-line script to run the analysis.
+The core of the project is a sophisticated analysis pipeline that processes satellite data to identify and quantify forest areas. The results are delivered in a clear and concise report, complete with a visual map of the analyzed region, which is also sent to the user via email for convenience.
+
+## Technology Stack
+
+This project leverages a modern stack of technologies for data processing, analysis, and presentation:
+
+*   **Backend:** Python
+*   **Web Framework:** Flask
+*   **Satellite Data Provider:** Google Earth Engine
+*   **Geospatial Analysis:** Rasterio, NumPy
+*   **Data Visualization:** Matplotlib
+*   **Frontend:** HTML, CSS, JavaScript
+
+## Key Features & Modules
+
+*   **Automated Data Retrieval:** The system automatically fetches the latest Sentinel-2 satellite data from Google Earth Engine for any specified area of interest.
+*   **Advanced Image Analysis:** It calculates the Normalized Difference Vegetation Index (NDVI), a key indicator of plant health, to classify the landscape into "Forest" and "Non-Forest" areas.
+*   **Comprehensive Reporting:** A detailed report is generated that quantifies the total area of forest cover in square kilometers and as a percentage of the total area.
+*   **Visual Mapping:** A high-quality map is produced, visually representing the classified forest and non-forest areas, making it easy to understand the results at a glance.
+*   **Email Notifications:** The complete analysis, including the report and the visual map, is automatically sent to a specified email address, ensuring that stakeholders are always up-to-date.
+*   **User-Friendly Web Interface:** A simple and intuitive web application allows users to easily define their area of interest and run the analysis with the click of a button.
+*   **Command-Line Interface:** For power users and for integration into automated workflows, a command-line interface is available to run the analysis.
+
+## Workflow
+
+The project follows a simple yet powerful workflow:
+
+1.  **Define Area of Interest:** The user specifies the geographical area to be analyzed, either through the web interface or as coordinates in the command-line tool.
+2.  **Data Acquisition:** The system queries Google Earth Engine to download the relevant Sentinel-2 satellite images for the specified area and date range.
+3.  **NDVI Calculation:** The raw satellite data is processed to calculate the NDVI for each pixel in the image.
+4.  **Forest Classification:** Based on the calculated NDVI values, the system classifies each pixel as either "Forest" or "Non-Forest".
+5.  **Report Generation:** A summary report is generated with key statistics on forest cover.
+6.  **Visualization:** A map is created to visually represent the results of the classification.
+7.  **Email Delivery:** The report and the map are sent to the user's email address.
 
 ## Installation
 
